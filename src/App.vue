@@ -1,9 +1,15 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/signup">Signup</router-link> |
-      <router-link to="/login">Login</router-link> |
+      <router-link to="/">Home</router-link>
+      <span v-if="!user">
+        | <router-link to="/signup">Signup</router-link> |
+        <router-link to="/login">Login</router-link> |
+      </span>
+      <span v-else>
+        <span> Hi, {{ user.attributes.given_name }}</span>
+        <amplify-sign-out></amplify-sign-out>
+      </span>
     </div>
     <router-view />
   </div>
@@ -16,7 +22,11 @@ import { Auth } from "aws-amplify";
 
 @Component
 export default class App extends Vue {
-  @Prop() private user!: Object;
+  data() {
+    return {
+      user: null
+    };
+  }
   async beforeCreate() {
     try {
       this.user = await Auth.currentAuthenticatedUser();
