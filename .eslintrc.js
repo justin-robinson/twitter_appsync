@@ -11,6 +11,7 @@ module.exports = {
   parserOptions: {
     parser: "@typescript-eslint/parser"
   },
+//   ignorePatterns: ["src/aws-exports.js"],
   overrides: [
     {
       files: ["**/__tests__/*.{j,t}s?(x)"],
