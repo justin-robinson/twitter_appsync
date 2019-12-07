@@ -1,0 +1,16 @@
+type Tweet
+  @model
+  @auth(rules: [
+      {
+        allow: owner,
+        mutations: [create, update, delete],
+        queries: null
+      }
+    ]
+  )
+{
+  id: ID!
+  text: String!
+  replies: [Tweet] @connection(name: "TweetReplies")
+  tweet: Tweet @connection(name: "TweetReplies")
+}

@@ -10,6 +10,26 @@
             "StackName": "amplify-twitterappsync-dev-224725",
             "StackId": "arn:aws:cloudformation:us-east-1:065890235139:stack/amplify-twitterappsync-dev-224725/49cb8800-18a4-11ea-be00-12f2c8f206e2",
             "AmplifyAppId": "d3uv2wdsr6o9dr"
+        },
+        "categories": {
+            "function": {
+                "twitterappsync1abd0b60DefineAuthChallenge": {},
+                "twitterappsync1abd0b60CreateAuthChallenge": {},
+                "twitterappsync1abd0b60VerifyAuthChallengeResponse": {
+                    "RECAPTCHASECRET": "6Lcxi8YUAAAAAA84jMbXvoBUl5ScNlWC1BNAf-hn"
+                },
+                "twitterappsync1abd0b60CustomMessage": {
+                    "REDIRECTURL": "https://twitter.justinrobinson.dev",
+                    "EMAILSUBJECT": "Twitter",
+                    "EMAILMESSAGE": "verify your email"
+                },
+                "twitterappsync1abd0b60PostConfirmation": {
+                    "GROUP": "users"
+                }
+            },
+            "auth": {
+                "twitterappsync1abd0b60": {}
+            }
         }
     }
 }
