@@ -9,6 +9,24 @@
   </div>
 </template>
 
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
+import { AmplifyEventBus } from "aws-amplify-vue";
+import { Auth } from "aws-amplify";
+
+@Component
+export default class App extends Vue {
+  @Prop() private user!: Object;
+  async beforeCreate() {
+    try {
+      this.user = await Auth.currentAuthenticatedUser();
+    } catch (e) {
+      // user not logged in
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
