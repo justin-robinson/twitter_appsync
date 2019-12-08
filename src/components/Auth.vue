@@ -23,7 +23,7 @@ export default class Auth extends Vue {
     switch (authState) {
       case "signedIn":
         this.getAndSetLoggedInUser();
-        this.$router.push("/").catch(() => {});
+        this.$router.push("/home").catch(() => {});
         break;
       case "signedOut":
         this.$store.commit("setUser", null);
