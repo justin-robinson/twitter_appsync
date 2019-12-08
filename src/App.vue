@@ -7,10 +7,6 @@
         <span> Hi, {{ $store.getters.firstName }}</span>
         <amplify-sign-out></amplify-sign-out>
       </span>
-      <span v-else>
-        | <router-link to="/signup">Signup</router-link> |
-        <router-link to="/login">Login</router-link> |
-      </span>
     </div>
     <router-view />
   </div>

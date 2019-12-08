@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="index">
     <h3>
       Welcome to twitter_appsync.
       <router-link to="/signup">Signup</router-link> or
@@ -12,7 +12,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class Home extends Vue {}
+export default class Index extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
