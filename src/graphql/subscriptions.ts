@@ -1,153 +1,72 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUser = `subscription OnCreateUser {
-  onCreateUser {
+export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
+  onCreateTweet(owner: $owner) {
     id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateUser = `subscription OnUpdateUser {
-  onUpdateUser {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteUser = `subscription OnDeleteUser {
-  onDeleteUser {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onCreateTweet = `subscription OnCreateTweet {
-  onCreateTweet {
-    id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;
-export const onUpdateTweet = `subscription OnUpdateTweet {
-  onUpdateTweet {
+export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
+  onUpdateTweet(owner: $owner) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;
-export const onDeleteTweet = `subscription OnDeleteTweet {
-  onDeleteTweet {
+export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
+  onDeleteTweet(owner: $owner) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;

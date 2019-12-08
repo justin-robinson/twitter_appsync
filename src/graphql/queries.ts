@@ -1,70 +1,51 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const getUser = `query GetUser($id: ID!) {
-  getUser(id: $id) {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const listUsers = `query ListUsers(
-  $filter: ModelUserFilterInput
+export const syncTweets = `query SyncTweets(
+  $filter: ModelTweetFilterInput
   $limit: Int
   $nextToken: String
+  $lastSync: AWSTimestamp
 ) {
-  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  syncTweets(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
     items {
       id
-      name
-      tweets {
-        nextToken
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
     nextToken
+    startedAt
   }
 }
 `;
 export const getTweet = `query GetTweet($id: ID!) {
   getTweet(id: $id) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;
@@ -76,20 +57,14 @@ export const listTweets = `query ListTweets(
   listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
     nextToken
+    startedAt
   }
 }
 `;

@@ -1,93 +1,29 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const createUser = `mutation CreateUser(
-  $input: CreateUserInput!
-  $condition: ModelUserConditionInput
-) {
-  createUser(input: $input, condition: $condition) {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const updateUser = `mutation UpdateUser(
-  $input: UpdateUserInput!
-  $condition: ModelUserConditionInput
-) {
-  updateUser(input: $input, condition: $condition) {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const deleteUser = `mutation DeleteUser(
-  $input: DeleteUserInput!
-  $condition: ModelUserConditionInput
-) {
-  deleteUser(input: $input, condition: $condition) {
-    id
-    name
-    tweets {
-      items {
-        id
-        title
-      }
-      nextToken
-    }
-  }
-}
-`;
 export const createTweet = `mutation CreateTweet(
   $input: CreateTweetInput!
   $condition: ModelTweetConditionInput
 ) {
   createTweet(input: $input, condition: $condition) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;
@@ -97,36 +33,23 @@ export const updateTweet = `mutation UpdateTweet(
 ) {
   updateTweet(input: $input, condition: $condition) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;
@@ -136,36 +59,23 @@ export const deleteTweet = `mutation DeleteTweet(
 ) {
   deleteTweet(input: $input, condition: $condition) {
     id
-    title
-    user {
-      id
-      name
-      tweets {
-        nextToken
-      }
-    }
+    text
     replies {
-      items {
-        id
-        title
-      }
       nextToken
+      startedAt
     }
     tweet {
       id
-      title
-      user {
-        id
-        name
-      }
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        title
-      }
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      owner
     }
+    _version
+    _deleted
+    _lastChangedAt
+    owner
   }
 }
 `;

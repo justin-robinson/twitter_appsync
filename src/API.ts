@@ -1,16 +1,18 @@
 /* tslint:disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateUserInput = {
+export type CreateTweetInput = {
   id?: string | null,
-  name: string,
+  text: string,
+  _version?: number | null,
+  tweetTweetId?: string | null,
 };
 
-export type ModelUserConditionInput = {
-  name?: ModelStringInput | null,
-  and?: Array< ModelUserConditionInput | null > | null,
-  or?: Array< ModelUserConditionInput | null > | null,
-  not?: ModelUserConditionInput | null,
+export type ModelTweetConditionInput = {
+  text?: ModelStringInput | null,
+  and?: Array< ModelTweetConditionInput | null > | null,
+  or?: Array< ModelTweetConditionInput | null > | null,
+  not?: ModelTweetConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -53,46 +55,24 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type UpdateUserInput = {
-  id: string,
-  name?: string | null,
-};
-
-export type DeleteUserInput = {
-  id?: string | null,
-};
-
-export type CreateTweetInput = {
-  id?: string | null,
-  title: string,
-  tweetUserId?: string | null,
-  tweetTweetId?: string | null,
-};
-
-export type ModelTweetConditionInput = {
-  title?: ModelStringInput | null,
-  and?: Array< ModelTweetConditionInput | null > | null,
-  or?: Array< ModelTweetConditionInput | null > | null,
-  not?: ModelTweetConditionInput | null,
-};
-
 export type UpdateTweetInput = {
   id: string,
-  title?: string | null,
-  tweetUserId?: string | null,
+  text?: string | null,
+  _version?: number | null,
   tweetTweetId?: string | null,
 };
 
 export type DeleteTweetInput = {
   id?: string | null,
+  _version?: number | null,
 };
 
-export type ModelUserFilterInput = {
+export type ModelTweetFilterInput = {
   id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  and?: Array< ModelUserFilterInput | null > | null,
-  or?: Array< ModelUserFilterInput | null > | null,
-  not?: ModelUserFilterInput | null,
+  text?: ModelStringInput | null,
+  and?: Array< ModelTweetFilterInput | null > | null,
+  or?: Array< ModelTweetFilterInput | null > | null,
+  not?: ModelTweetFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -111,80 +91,6 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTweetFilterInput = {
-  id?: ModelIDInput | null,
-  title?: ModelStringInput | null,
-  and?: Array< ModelTweetFilterInput | null > | null,
-  or?: Array< ModelTweetFilterInput | null > | null,
-  not?: ModelTweetFilterInput | null,
-};
-
-export type CreateUserMutationVariables = {
-  input: CreateUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type CreateUserMutation = {
-  createUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
-export type UpdateUserMutationVariables = {
-  input: UpdateUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type UpdateUserMutation = {
-  updateUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
-export type DeleteUserMutationVariables = {
-  input: DeleteUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type DeleteUserMutation = {
-  deleteUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
 export type CreateTweetMutationVariables = {
   input: CreateTweetInput,
   condition?: ModelTweetConditionInput | null,
@@ -194,44 +100,25 @@ export type CreateTweetMutation = {
   createTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
 };
 
@@ -244,44 +131,25 @@ export type UpdateTweetMutation = {
   updateTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
 };
 
@@ -294,87 +162,49 @@ export type DeleteTweetMutation = {
   deleteTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
 };
 
-export type GetUserQueryVariables = {
-  id: string,
-};
-
-export type GetUserQuery = {
-  getUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
-export type ListUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null,
+export type SyncTweetsQueryVariables = {
+  filter?: ModelTweetFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
+  lastSync?: number | null,
 };
 
-export type ListUsersQuery = {
-  listUsers:  {
-    __typename: "ModelUserConnection",
+export type SyncTweetsQuery = {
+  syncTweets:  {
+    __typename: "ModelTweetConnection",
     items:  Array< {
-      __typename: "User",
+      __typename: "Tweet",
       id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null > | null,
     nextToken: string | null,
+    startedAt: number | null,
   } | null,
 };
 
@@ -386,44 +216,25 @@ export type GetTweetQuery = {
   getTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
 };
 
@@ -439,208 +250,103 @@ export type ListTweetsQuery = {
     items:  Array< {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null > | null,
     nextToken: string | null,
+    startedAt: number | null,
   } | null,
 };
 
-export type OnCreateUserSubscription = {
-  onCreateUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
-export type OnUpdateUserSubscription = {
-  onUpdateUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
-};
-
-export type OnDeleteUserSubscription = {
-  onDeleteUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    tweets:  {
-      __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
-      nextToken: string | null,
-    } | null,
-  } | null,
+export type OnCreateTweetSubscriptionVariables = {
+  owner: string,
 };
 
 export type OnCreateTweetSubscription = {
   onCreateTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
+};
+
+export type OnUpdateTweetSubscriptionVariables = {
+  owner: string,
 };
 
 export type OnUpdateTweetSubscription = {
   onUpdateTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
+};
+
+export type OnDeleteTweetSubscriptionVariables = {
+  owner: string,
 };
 
 export type OnDeleteTweetSubscription = {
   onDeleteTweet:  {
     __typename: "Tweet",
     id: string,
-    title: string,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      tweets:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-    } | null,
+    text: string,
     replies:  {
       __typename: "ModelTweetConnection",
-      items:  Array< {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null > | null,
       nextToken: string | null,
+      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      title: string,
-      user:  {
-        __typename: "User",
-        id: string,
-        name: string,
-      } | null,
-      replies:  {
-        __typename: "ModelTweetConnection",
-        nextToken: string | null,
-      } | null,
-      tweet:  {
-        __typename: "Tweet",
-        id: string,
-        title: string,
-      } | null,
+      text: string,
+      _version: number,
+      _deleted: boolean | null,
+      _lastChangedAt: number,
+      owner: string | null,
     } | null,
+    _version: number,
+    _deleted: boolean | null,
+    _lastChangedAt: number,
+    owner: string | null,
   } | null,
 };
