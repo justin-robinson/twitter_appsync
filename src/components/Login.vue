@@ -1,21 +1,38 @@
 <template>
   <div class="Login">
-    <amplify-sign-in v-bind:signInConfig="signInConfig"></amplify-sign-in>
+    <Message v-if="showConfirmSignup">
+      You need to verify your account. Check your email
+    </Message>
+    <amplify-sign-in></amplify-sign-in>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { AmplifyEventBus } from "aws-amplify-vue";
+import { bus } from "@/bus";
+import Message from "@/components/Message.vue";
 
-@Component
+@Component({
+  components: {
+    Message
+  }
+})
 export default class Login extends Vue {
-  data() {
-    return {
-      signInConfig: {
-        username: "username"
+  showConfirmSignup = false;
+  created() {
+    bus.$on("authState", (authState: string) => {
+      switch (authState) {
+        case "confirmSignUp":
+          this.showConfirmSignup = true;
+          break;
+        case "signUp":
+          this.$router.push("/signup").catch(() => {});
+          break;
+        default:
+          break;
       }
-    };
+    });
   }
 }
 </script>

@@ -3,8 +3,8 @@
 
 export type CreateTweetInput = {
   id?: string | null,
+  owner?: string | null,
   text: string,
-  _version?: number | null,
   tweetTweetId?: string | null,
 };
 
@@ -57,18 +57,18 @@ export type ModelSizeInput = {
 
 export type UpdateTweetInput = {
   id: string,
+  owner?: string | null,
   text?: string | null,
-  _version?: number | null,
   tweetTweetId?: string | null,
 };
 
 export type DeleteTweetInput = {
   id?: string | null,
-  _version?: number | null,
 };
 
 export type ModelTweetFilterInput = {
   id?: ModelIDInput | null,
+  owner?: ModelStringInput | null,
   text?: ModelStringInput | null,
   and?: Array< ModelTweetFilterInput | null > | null,
   or?: Array< ModelTweetFilterInput | null > | null,
@@ -91,6 +91,57 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export type SearchableTweetFilterInput = {
+  id?: SearchableIDFilterInput | null,
+  owner?: SearchableStringFilterInput | null,
+  text?: SearchableStringFilterInput | null,
+  and?: Array< SearchableTweetFilterInput | null > | null,
+  or?: Array< SearchableTweetFilterInput | null > | null,
+  not?: SearchableTweetFilterInput | null,
+};
+
+export type SearchableIDFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  match?: string | null,
+  matchPhrase?: string | null,
+  matchPhrasePrefix?: string | null,
+  multiMatch?: string | null,
+  exists?: boolean | null,
+  wildcard?: string | null,
+  regexp?: string | null,
+};
+
+export type SearchableStringFilterInput = {
+  ne?: string | null,
+  eq?: string | null,
+  match?: string | null,
+  matchPhrase?: string | null,
+  matchPhrasePrefix?: string | null,
+  multiMatch?: string | null,
+  exists?: boolean | null,
+  wildcard?: string | null,
+  regexp?: string | null,
+};
+
+export type SearchableTweetSortInput = {
+  field?: SearchableTweetSortableFields | null,
+  direction?: SearchableSortDirection | null,
+};
+
+export enum SearchableTweetSortableFields {
+  id = "id",
+  owner = "owner",
+  text = "text",
+}
+
+
+export enum SearchableSortDirection {
+  asc = "asc",
+  desc = "desc",
+}
+
+
 export type CreateTweetMutationVariables = {
   input: CreateTweetInput,
   condition?: ModelTweetConditionInput | null,
@@ -100,25 +151,34 @@ export type CreateTweetMutation = {
   createTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };
 
@@ -131,25 +191,34 @@ export type UpdateTweetMutation = {
   updateTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };
 
@@ -162,49 +231,34 @@ export type DeleteTweetMutation = {
   deleteTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
-  } | null,
-};
-
-export type SyncTweetsQueryVariables = {
-  filter?: ModelTweetFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncTweetsQuery = {
-  syncTweets:  {
-    __typename: "ModelTweetConnection",
-    items:  Array< {
-      __typename: "Tweet",
-      id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      owner: string | null,
-    } | null > | null,
-    nextToken: string | null,
-    startedAt: number | null,
   } | null,
 };
 
@@ -216,25 +270,34 @@ export type GetTweetQuery = {
   getTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };
 
@@ -250,14 +313,51 @@ export type ListTweetsQuery = {
     items:  Array< {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null > | null,
     nextToken: string | null,
-    startedAt: number | null,
+  } | null,
+};
+
+export type SearchTweetsQueryVariables = {
+  filter?: SearchableTweetFilterInput | null,
+  sort?: SearchableTweetSortInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type SearchTweetsQuery = {
+  searchTweets:  {
+    __typename: "SearchableTweetConnection",
+    items:  Array< {
+      __typename: "Tweet",
+      id: string,
+      owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
+    } | null > | null,
+    nextToken: string | null,
+    total: number | null,
   } | null,
 };
 
@@ -269,25 +369,34 @@ export type OnCreateTweetSubscription = {
   onCreateTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };
 
@@ -299,25 +408,34 @@ export type OnUpdateTweetSubscription = {
   onUpdateTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };
 
@@ -329,24 +447,33 @@ export type OnDeleteTweetSubscription = {
   onDeleteTweet:  {
     __typename: "Tweet",
     id: string,
+    owner: string | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
+      items:  Array< {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null > | null,
       nextToken: string | null,
-      startedAt: number | null,
     } | null,
     tweet:  {
       __typename: "Tweet",
       id: string,
-      text: string,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
       owner: string | null,
+      text: string,
+      replies:  {
+        __typename: "ModelTweetConnection",
+        nextToken: string | null,
+      } | null,
+      tweet:  {
+        __typename: "Tweet",
+        id: string,
+        owner: string | null,
+        text: string,
+      } | null,
     } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    owner: string | null,
   } | null,
 };

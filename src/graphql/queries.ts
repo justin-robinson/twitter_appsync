@@ -1,51 +1,32 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
-export const syncTweets = `query SyncTweets(
-  $filter: ModelTweetFilterInput
-  $limit: Int
-  $nextToken: String
-  $lastSync: AWSTimestamp
-) {
-  syncTweets(
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-    lastSync: $lastSync
-  ) {
-    items {
-      id
-      text
-      _version
-      _deleted
-      _lastChangedAt
-      owner
-    }
-    nextToken
-    startedAt
-  }
-}
-`;
 export const getTweet = `query GetTweet($id: ID!) {
   getTweet(id: $id) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;
@@ -57,14 +38,48 @@ export const listTweets = `query ListTweets(
   listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
     nextToken
-    startedAt
+  }
+}
+`;
+export const searchTweets = `query SearchTweets(
+  $filter: SearchableTweetFilterInput
+  $sort: SearchableTweetSortInput
+  $limit: Int
+  $nextToken: String
+) {
+  searchTweets(
+    filter: $filter
+    sort: $sort
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
+    }
+    nextToken
+    total
   }
 }
 `;

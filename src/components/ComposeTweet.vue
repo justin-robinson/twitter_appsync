@@ -12,13 +12,12 @@ import { createTweet } from "@/graphql/mutations";
 
 @Component
 export default class ComposeTweet extends Vue {
-  data() {
-    return {
-      tweet: ""
-    };
-  }
+  tweet = "";
   async sendTweet() {
-    const tweet = { text: this.tweet };
+    const tweet = {
+      text: this.tweet,
+      owner: this.$store.getters.userId
+    };
     await API.graphql(graphqlOperation(createTweet, { input: tweet }));
   }
 }

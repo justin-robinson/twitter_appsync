@@ -7,23 +7,29 @@ export const createTweet = `mutation CreateTweet(
 ) {
   createTweet(input: $input, condition: $condition) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;
@@ -33,23 +39,29 @@ export const updateTweet = `mutation UpdateTweet(
 ) {
   updateTweet(input: $input, condition: $condition) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;
@@ -59,23 +71,29 @@ export const deleteTweet = `mutation DeleteTweet(
 ) {
   deleteTweet(input: $input, condition: $condition) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;

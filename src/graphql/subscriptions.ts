@@ -4,69 +4,87 @@
 export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
   onCreateTweet(owner: $owner) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;
 export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
   onUpdateTweet(owner: $owner) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;
 export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
   onDeleteTweet(owner: $owner) {
     id
+    owner
     text
     replies {
+      items {
+        id
+        owner
+        text
+      }
       nextToken
-      startedAt
     }
     tweet {
       id
-      text
-      _version
-      _deleted
-      _lastChangedAt
       owner
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
     }
-    _version
-    _deleted
-    _lastChangedAt
-    owner
   }
 }
 `;

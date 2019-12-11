@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "twitterappsync7fdc032b",
+    "functionName": "twitterappsync7fdc032bCustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": "[{\"key\":\"RESOURCENAME\",\"value\":\"resourceName\"}]",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "twitterappsync7fdc032bCustomMessage",
+    "skipEdit": true,
+    "resourceName": "twitterappsync7fdc032bCustomMessage"
+}

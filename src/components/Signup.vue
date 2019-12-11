@@ -1,10 +1,9 @@
 <template>
   <div class="signup">
-    <div class="verify-container" v-if="showVerify">
-      <span class="verify-message">
-        Check your email to verify your account
-      </span>
-    </div>
+    <Message v-if="showVerify">
+      Check your email to verify your account then
+      <router-link to="/login">login</router-link>
+    </Message>
     <amplify-sign-up v-bind:signUpConfig="signUpConfig"></amplify-sign-up>
   </div>
 </template>
@@ -12,10 +11,15 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { AmplifyEventBus } from "aws-amplify-vue";
+import Message from "@/components/Message.vue";
 
-@Component
+@Component({
+  components: {
+    Message
+  }
+})
 export default class Signup extends Vue {
-  @Prop() private showVerify!: Boolean;
+  showVerify = false;
   created() {
     AmplifyEventBus.$on("authState", async (authState: String) => {
       if (authState !== "confirmSignUp") {
@@ -28,11 +32,10 @@ export default class Signup extends Vue {
     return {
       signUpConfig: {
         hideAllDefaults: true,
-        usernameAttributes: "email",
         signUpFields: [
           {
             label: "Email",
-            key: "email",
+            key: "username",
             required: true,
             displayOrder: 1,
             type: "string",
@@ -75,16 +78,5 @@ h3 {
 a {
   font-weight: bold;
   color: dodgerblue;
-}
-
-.verify-container {
-  display: flex;
-  justify-content: center;
-}
-
-.verify-message {
-  background: #444;
-  color: #eee;
-  width: 200px;
 }
 </style>

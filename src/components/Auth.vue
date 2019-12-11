@@ -2,6 +2,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { AmplifyEventBus } from "aws-amplify-vue";
 import Amplify from "aws-amplify";
+import { bus } from "@/bus";
 
 @Component
 export default class Auth extends Vue {
@@ -20,6 +21,8 @@ export default class Auth extends Vue {
     }
   }
   authStateCallback(authState: string) {
+    console.log(authState);
+    bus.$emit("authState", authState);
     switch (authState) {
       case "signedIn":
         this.getAndSetLoggedInUser();

@@ -1,5 +1,5 @@
 type Tweet
-  @model
+  @model @searchable
   @auth(rules: [
       {
         allow: owner,
@@ -10,7 +10,9 @@ type Tweet
   )
 {
   id: ID!
+  owner: String
   text: String!
   replies: [Tweet] @connection(name: "TweetReplies")
   tweet: Tweet @connection(name: "TweetReplies")
 }
+

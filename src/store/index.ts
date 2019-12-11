@@ -17,10 +17,13 @@ export default new Vuex.Store({
   },
   getters: {
       isLoggedIn(state): boolean {
-          return state.isLoggedIn;
+        return state.isLoggedIn;
       },
       firstName(state): string {
         return get(state, 'user.attributes.given_name');
+      },
+      userId(state): string {
+        return get(state, 'user.attributes.sub');
       }
   },
   actions: {},

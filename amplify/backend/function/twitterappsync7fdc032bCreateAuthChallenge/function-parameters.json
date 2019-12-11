@@ -1,0 +1,14 @@
+{
+    "trigger": true,
+    "modules": [
+        "captcha-create-challenge"
+    ],
+    "parentResource": "twitterappsync7fdc032b",
+    "functionName": "twitterappsync7fdc032bCreateAuthChallenge",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerTemplate": "CreateAuthChallenge.json.ejs",
+    "roleName": "twitterappsync7fdc032bCreateAuthChallenge",
+    "skipEdit": true,
+    "resourceName": "twitterappsync7fdc032bCreateAuthChallenge"
+}

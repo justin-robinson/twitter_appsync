@@ -1,6 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Index from "../views/Index.vue";
+import Login from "../views/Login.vue";
+import Home from "../views/Home.vue";
+import { Auth } from "aws-amplify";
 
 Vue.use(VueRouter);
 
@@ -22,14 +25,15 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () =>
-      import("../views/Login.vue")
+    component: Login
   },
   {
       path: "/home",
       name: "home",
-      component: () =>
-        import("../views/Home.vue")
+      component: Home,
+      meta: {
+          requiresAuth: true
+      }
   }
 ];
 
@@ -37,6 +41,24 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach(async (to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    let user;
+    try {
+        user = await Auth.currentAuthenticatedUser()
+    } catch (e) {
+    // user not logged in
+    }
+    if (requiresAuth && !user) {
+        next({
+            path: '/login',
+            query: { redirect: to.fullPath }
+        })
+    } else {
+        next()
+    }
 });
 
 export default router;
