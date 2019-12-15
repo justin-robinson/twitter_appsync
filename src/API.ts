@@ -4,8 +4,17 @@
 export type CreateTweetInput = {
   id?: string | null,
   owner?: string | null,
+  author?: UserInput | null,
   text: string,
   tweetTweetId?: string | null,
+};
+
+export type UserInput = {
+  id: string,
+  username?: string | null,
+  email?: string | null,
+  first_name?: string | null,
+  last_name?: string | null,
 };
 
 export type ModelTweetConditionInput = {
@@ -58,6 +67,7 @@ export type ModelSizeInput = {
 export type UpdateTweetInput = {
   id: string,
   owner?: string | null,
+  author?: UserInput | null,
   text?: string | null,
   tweetTweetId?: string | null,
 };
@@ -152,6 +162,14 @@ export type CreateTweetMutation = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -167,6 +185,14 @@ export type CreateTweetMutation = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -192,6 +218,14 @@ export type UpdateTweetMutation = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -207,6 +241,14 @@ export type UpdateTweetMutation = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -232,6 +274,14 @@ export type DeleteTweetMutation = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -247,6 +297,14 @@ export type DeleteTweetMutation = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -271,6 +329,14 @@ export type GetTweetQuery = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -286,6 +352,14 @@ export type GetTweetQuery = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -314,6 +388,14 @@ export type ListTweetsQuery = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -344,6 +426,14 @@ export type SearchTweetsQuery = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -370,6 +460,14 @@ export type OnCreateTweetSubscription = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -385,6 +483,14 @@ export type OnCreateTweetSubscription = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -409,6 +515,14 @@ export type OnUpdateTweetSubscription = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -424,6 +538,14 @@ export type OnUpdateTweetSubscription = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",
@@ -448,6 +570,14 @@ export type OnDeleteTweetSubscription = {
     __typename: "Tweet",
     id: string,
     owner: string | null,
+    author:  {
+      __typename: "User",
+      id: string,
+      username: string | null,
+      email: string | null,
+      first_name: string | null,
+      last_name: string | null,
+    } | null,
     text: string,
     replies:  {
       __typename: "ModelTweetConnection",
@@ -463,6 +593,14 @@ export type OnDeleteTweetSubscription = {
       __typename: "Tweet",
       id: string,
       owner: string | null,
+      author:  {
+        __typename: "User",
+        id: string,
+        username: string | null,
+        email: string | null,
+        first_name: string | null,
+        last_name: string | null,
+      } | null,
       text: string,
       replies:  {
         __typename: "ModelTweetConnection",

@@ -1,31 +1,19 @@
 {
     "dev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-twitterappsync-dev-210931-authRole",
-            "UnauthRoleArn": "arn:aws:iam::065890235139:role/amplify-twitterappsync-dev-210931-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::065890235139:role/amplify-twitterappsync-dev-210931-authRole",
+            "AuthRoleName": "amplify-twitterappsync-dev-190434-authRole",
+            "UnauthRoleArn": "arn:aws:iam::065890235139:role/amplify-twitterappsync-dev-190434-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::065890235139:role/amplify-twitterappsync-dev-190434-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-twitterappsync-dev-210931-deployment",
-            "UnauthRoleName": "amplify-twitterappsync-dev-210931-unauthRole",
-            "StackName": "amplify-twitterappsync-dev-210931",
-            "StackId": "arn:aws:cloudformation:us-east-1:065890235139:stack/amplify-twitterappsync-dev-210931/462c8ae0-1bbb-11ea-8222-126c97cb5bc1",
-            "AmplifyAppId": "d35jj75q6bkken"
+            "DeploymentBucketName": "amplify-twitterappsync-dev-190434-deployment",
+            "UnauthRoleName": "amplify-twitterappsync-dev-190434-unauthRole",
+            "StackName": "amplify-twitterappsync-dev-190434",
+            "StackId": "arn:aws:cloudformation:us-east-1:065890235139:stack/amplify-twitterappsync-dev-190434/7b4558e0-1ece-11ea-82f6-0a2f4587a347",
+            "AmplifyAppId": "d22awk6zn6oxg6"
         },
         "categories": {
-            "function": {
-                "twitterappsync7fdc032bDefineAuthChallenge": {},
-                "twitterappsync7fdc032bCreateAuthChallenge": {},
-                "twitterappsync7fdc032bVerifyAuthChallengeResponse": {
-                    "RECAPTCHASECRET": "6Lcxi8YUAAAAAA84jMbXvoBUl5ScNlWC1BNAf-hn"
-                },
-                "twitterappsync7fdc032bCustomMessage": {
-                    "REDIRECTURL": "https://twitter.justinrobinson.dev",
-                    "EMAILSUBJECT": "verify email",
-                    "EMAILMESSAGE": "click here to verify your email"
-                }
-            },
             "auth": {
-                "twitterappsync7fdc032b": {}
+                "twitterappsynca2942560": {}
             }
         }
     }

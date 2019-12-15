@@ -5,6 +5,13 @@ export const getTweet = `query GetTweet($id: ID!) {
   getTweet(id: $id) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -17,6 +24,13 @@ export const getTweet = `query GetTweet($id: ID!) {
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -39,6 +53,13 @@ export const listTweets = `query ListTweets(
     items {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -68,6 +89,13 @@ export const searchTweets = `query SearchTweets(
     items {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken

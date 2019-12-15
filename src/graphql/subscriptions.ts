@@ -5,6 +5,13 @@ export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
   onCreateTweet(owner: $owner) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -17,6 +24,13 @@ export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -34,6 +48,13 @@ export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
   onUpdateTweet(owner: $owner) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -46,6 +67,13 @@ export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -63,6 +91,13 @@ export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
   onDeleteTweet(owner: $owner) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -75,6 +110,13 @@ export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken

@@ -8,6 +8,13 @@ export const createTweet = `mutation CreateTweet(
   createTweet(input: $input, condition: $condition) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -20,6 +27,13 @@ export const createTweet = `mutation CreateTweet(
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -40,6 +54,13 @@ export const updateTweet = `mutation UpdateTweet(
   updateTweet(input: $input, condition: $condition) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -52,6 +73,13 @@ export const updateTweet = `mutation UpdateTweet(
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
@@ -72,6 +100,13 @@ export const deleteTweet = `mutation DeleteTweet(
   deleteTweet(input: $input, condition: $condition) {
     id
     owner
+    author {
+      id
+      username
+      email
+      first_name
+      last_name
+    }
     text
     replies {
       items {
@@ -84,6 +119,13 @@ export const deleteTweet = `mutation DeleteTweet(
     tweet {
       id
       owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+      }
       text
       replies {
         nextToken
