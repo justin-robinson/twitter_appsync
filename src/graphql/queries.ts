@@ -1,6 +1,37 @@
 // tslint:disable
 // this is an auto generated file. This will be overwritten
 
+export const listTweets = `query ListTweets(
+  $filter: ModelTweetFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      owner
+      author {
+        id
+        username
+        email
+        first_name
+        last_name
+        owner
+      }
+      text
+      replies {
+        nextToken
+      }
+      tweet {
+        id
+        owner
+        text
+      }
+    }
+    nextToken
+  }
+}
+`;
 export const getTweet = `query GetTweet($id: ID!) {
   getTweet(id: $id) {
     id
@@ -11,6 +42,7 @@ export const getTweet = `query GetTweet($id: ID!) {
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -30,6 +62,7 @@ export const getTweet = `query GetTweet($id: ID!) {
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -41,36 +74,6 @@ export const getTweet = `query GetTweet($id: ID!) {
         text
       }
     }
-  }
-}
-`;
-export const listTweets = `query ListTweets(
-  $filter: ModelTweetFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTweets(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      owner
-      author {
-        id
-        username
-        email
-        first_name
-        last_name
-      }
-      text
-      replies {
-        nextToken
-      }
-      tweet {
-        id
-        owner
-        text
-      }
-    }
-    nextToken
   }
 }
 `;
@@ -95,6 +98,7 @@ export const searchTweets = `query SearchTweets(
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -108,6 +112,35 @@ export const searchTweets = `query SearchTweets(
     }
     nextToken
     total
+  }
+}
+`;
+export const getUser = `query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
+  }
+}
+`;
+export const listUsers = `query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      username
+      email
+      first_name
+      last_name
+      owner
+    }
+    nextToken
   }
 }
 `;

@@ -26,5 +26,22 @@
 				}
 			}
 		}
+	},
+	"function": {
+		"newUserToApi": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "api",
+					"resourceName": "twitterAppsync",
+					"attributes": [
+						"GraphQLAPIIdOutput",
+						"GraphQLAPIEndpointOutput"
+					]
+				}
+			]
+		}
 	}
 }

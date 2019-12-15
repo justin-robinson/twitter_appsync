@@ -5,7 +5,8 @@ type Tweet
         allow: owner,
         mutations: [create, update, delete],
         queries: null
-      }
+      },
+      { allow: private, provider: iam, operations: [create, read, update, delete] }
     ]
   )
 {
@@ -17,7 +18,17 @@ type Tweet
   tweet: Tweet @connection(name: "TweetReplies")
 }
 
-type User {
+type User
+  @model
+  @auth(rules: [
+    {
+      allow: owner,
+      mutations: [create, update, delete],
+      queries: null
+    },
+    { allow: private, provider: iam, operations: [create, read, update, delete] }
+  ])
+{
     id: ID!
     username: String
     email: String

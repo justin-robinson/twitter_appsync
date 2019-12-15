@@ -14,6 +14,7 @@ export const createTweet = `mutation CreateTweet(
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -33,6 +34,7 @@ export const createTweet = `mutation CreateTweet(
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -60,6 +62,7 @@ export const updateTweet = `mutation UpdateTweet(
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -79,6 +82,7 @@ export const updateTweet = `mutation UpdateTweet(
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -106,6 +110,7 @@ export const deleteTweet = `mutation DeleteTweet(
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -125,6 +130,7 @@ export const deleteTweet = `mutation DeleteTweet(
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -136,6 +142,48 @@ export const deleteTweet = `mutation DeleteTweet(
         text
       }
     }
+  }
+}
+`;
+export const createUser = `mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
+  }
+}
+`;
+export const updateUser = `mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
+  }
+}
+`;
+export const deleteUser = `mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
   }
 }
 `;

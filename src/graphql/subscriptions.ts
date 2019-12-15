@@ -11,6 +11,7 @@ export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -30,6 +31,7 @@ export const onCreateTweet = `subscription OnCreateTweet($owner: String!) {
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -54,6 +56,7 @@ export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -73,6 +76,7 @@ export const onUpdateTweet = `subscription OnUpdateTweet($owner: String!) {
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -97,6 +101,7 @@ export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
       email
       first_name
       last_name
+      owner
     }
     text
     replies {
@@ -116,6 +121,7 @@ export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
         email
         first_name
         last_name
+        owner
       }
       text
       replies {
@@ -127,6 +133,39 @@ export const onDeleteTweet = `subscription OnDeleteTweet($owner: String!) {
         text
       }
     }
+  }
+}
+`;
+export const onCreateUser = `subscription OnCreateUser($owner: String!) {
+  onCreateUser(owner: $owner) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
+  }
+}
+`;
+export const onUpdateUser = `subscription OnUpdateUser($owner: String!) {
+  onUpdateUser(owner: $owner) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
+  }
+}
+`;
+export const onDeleteUser = `subscription OnDeleteUser($owner: String!) {
+  onDeleteUser(owner: $owner) {
+    id
+    username
+    email
+    first_name
+    last_name
+    owner
   }
 }
 `;
